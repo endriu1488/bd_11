@@ -1,0 +1,59 @@
+CREATE TABLE angajati(
+empno NUMBER(4),
+ename VARCHAR(2),
+deptno NUMBER(7,2) NOT NULL,
+CONSTRAINT angajati_empno_pk PRIMARY KEY(EMPNO));
+
+CREATE TABLE departament(
+deptno NUMBER(2),
+dname VARCHAR2(14),
+loc VARCHAR2(13),
+UNIQUE (dname),
+PRIMARY KEY(deptno));
+
+describe departament
+
+insert into departament values(10,'ACCOUNTING','NEW YORK');
+
+insert into departament values(20,'RESEARCH','DALLAS');
+
+insert into departament values(30,'SALES','CHICAGO');
+
+insert into departament values(40,'OPERATIONS','BOSTON');
+
+drop table angajati
+
+CREATE TABLE angajati(
+empno NUMBER(4),
+ename VARCHAR2(10) NOT NULL,
+job VARCHAR2(9),
+mgr NUMBER(4),
+hiredate DATE,
+sal NUMBER(7,2),
+comm NUMBER(7,2),
+deptno NUMBER(7,2) NOT NULL,
+FOREIGN KEY (deptno)REFERENCES departament(deptno));
+
+insert into angajati
+select *
+from emp
+
+insert into angajati(empno,ename,job,comm,deptno) values(7571,'FORD','MANAGER',200,0)
+insert into angajati(empno,ename,job,comm) values(7571,'FORD','MANAGER',200)
+
+ALTER TABLE angajati
+MODIFY sal NOT NULL;
+
+ALTER TABLE angajati 
+ADD constraint empCP 
+PRIMARY KEY(empno)
+
+select *
+from user_constraints
+where table_name='angajati'
+
+ALTER TABLE angajati 
+drop PRIMARY KEY
+
+
+describe angajati
